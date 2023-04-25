@@ -1,0 +1,78 @@
+.header {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+}
+
+.header-logo img {
+    width: 30%;
+}
+
+.nav-menu {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.nav-menu .nav-item a {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.active-link {
+    color: #faa935 !important;
+}
+
+.nav-btn .secondary-btn {
+    background-color: transparent;
+    color: #000;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    outline: none;
+}
+
+.nav-btn .secondary-btn:hover {
+    background-color: transparent;
+    color: #000;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.nav-btn .primary-btn {
+    background-color: #ff7e01;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 15px;
+    padding: 5px 20px;
+    outline: none;
+}
+
+.nav-btn .primary-btn:hover {
+    background-color: #faa935;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 15px;
+    padding: 5px 20px;
+}
+
+.menu-mobile {
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+
+.header-sticky {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 8px -3px #ddd;
+    z-index: 999;
+}

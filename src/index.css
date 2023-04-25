@@ -1,0 +1,38 @@
+/* reset default style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* base style */
+body {
+    background: #fcfcfc;
+    font-family: "Istok Web", sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "RocknRoll One", sans-serif, !important;
+}
+
+a,
+.link {
+    text-decoration: none !important;
+    color: unset !important;
+}
+
+h1,
+h2 {
+    font-style: 2.1rem;
+    font-weight: 600;
+    color: #212245;
+}
+
+section {
+    padding: 60px 0;
+}

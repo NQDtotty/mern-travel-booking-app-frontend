@@ -1,0 +1,32 @@
+.hero-subtitle h4 {
+    font-family: "Island Moments", cursive;
+    font-size: 1.3rem;
+    border-radius: 15px;
+    background-color: #faa935;
+    padding: 5px 10px;
+}
+
+.hero-subtitle img {
+    width: 2.3rem;
+}
+
+.hero-content h1 {
+    font-weight: 600;
+}
+
+.hero-content h1 .highlight {
+    color: #faa935;
+}
+
+.hero-content p {
+    color: #333;
+}
+
+.hero-img img,
+.hero-video video {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #faa935;
+    border-radius: 20px;
+    object-fit: cover;
+}
