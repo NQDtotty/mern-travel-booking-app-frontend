@@ -5,7 +5,8 @@
 }
 
 .header-logo img {
-    width: 30%;
+    width: 40%;
+    object-fit: contain;
 }
 
 .nav-menu {
@@ -16,6 +17,7 @@
 .nav-menu .nav-item a {
     font-size: 1rem;
     font-weight: 600;
+    transition: 0.3s;
 }
 
 .active-link {
@@ -23,16 +25,6 @@
 }
 
 .nav-btn .secondary-btn {
-    background-color: transparent;
-    color: #000;
-    border: none;
-    font-weight: 600;
-    font-size: 1rem;
-    outline: none;
-}
-
-.nav-btn .secondary-btn:hover {
-    background-color: transparent;
     color: #000;
     border: none;
     font-weight: 600;
@@ -47,25 +39,21 @@
     font-size: 1rem;
     border-radius: 15px;
     padding: 5px 20px;
-    outline: none;
 }
 
 .nav-btn .primary-btn:hover {
     background-color: #faa935;
     color: #fff;
-    border: none;
-    font-weight: 600;
-    font-size: 1rem;
-    border-radius: 15px;
-    padding: 5px 20px;
 }
 
 .menu-mobile {
     cursor: pointer;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: none;
 }
 
-.header-sticky {
+.header-fix {
     width: 100%;
     height: 80px;
     line-height: 80px;
@@ -75,4 +63,65 @@
     left: 0;
     box-shadow: 3px 3px 8px -3px #ddd;
     z-index: 999;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-btn .secondary-btn {
+        font-size: 0.9rem;
+    }
+
+    .nav-btn .primary-btn {
+        font-size: 0.9rem;
+    }
+
+    .header-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 99;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 100%;
+        background-color: #fff;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 99;
+        line-height: 40px;
+    }
+
+    .nav-menu .nav-item a {
+        font-size: 1.1rem;
+    }
+
+    .menu-mobile {
+        display: block;
+    }
+
+    .show-menu {
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .nav-btn .secondary-btn {
+        font-size: 0.7rem;
+    }
+
+    .nav-btn .primary-btn {
+        font-size: 0.7rem;
+    }
+
+    .nav-menu .nav-item a {
+        font-size: 1rem;
+    }
 }

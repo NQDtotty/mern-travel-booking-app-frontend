@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './header.css';
 import { Container, Row } from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
@@ -21,6 +21,10 @@ const navLinks = [
 ]
 
 export default function Header() {
+    const menuRef = useRef(null);
+
+    const toggleMenu = () => menuRef.current.classList.toggle("show-menu");
+
     return (
         <header className='header'>
             <Container>
@@ -30,8 +34,8 @@ export default function Header() {
                             <img src={logo} alt='logo-img' />
                         </div>
 
-                        <div className='header-nav'>
-                            <ul className='nav-menu d-flex align-items-center gap-5'>
+                        <div className='header-nav' ref={menuRef} onClick={toggleMenu}>
+                            <ul className='nav-menu d-flex align-items-center gap-4'>
                                 {
                                     navLinks.map((item, index) => (
                                         <li className='nav-item' key={index}>
@@ -43,7 +47,7 @@ export default function Header() {
                         </div>
 
                         <div className='header-right d-flex align-items-center gap-4'>
-                            <div className='nav-btn d-flex align-items-center gap-1'>
+                            <div className='nav-btn d-flex align-items-center'>
                                 <button className='btn secondary-btn'>
                                     <Link to='/login'>Login</Link>
                                 </button>
@@ -52,7 +56,7 @@ export default function Header() {
                                 </button>
                             </div>
 
-                            <span className='menu-mobile'>
+                            <span className='menu-mobile' onClick={toggleMenu}>
                                 <i className="ri-menu-line"></i>
                             </span>
                         </div>
