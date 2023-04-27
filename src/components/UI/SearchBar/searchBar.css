@@ -1,0 +1,36 @@
+.search-bar {
+    padding: 8px 15px;
+    border-radius: 50px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+    border: 1px solid #faa935;
+}
+
+.form-group i {
+    font-size: 1.9rem;
+    color: #ee6e6e;
+}
+
+.form-group h6 {
+    margin-bottom: 0;
+}
+
+.form-group input {
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    color: #0b2727;
+    font-weight: 500;
+}
+
+button.search-btn {
+    border-radius: 50px;
+    background-color: #ff7e01;
+    padding: 7px 15px;
+    font-weight: 600;
+    color: #fff;
+}
+
+button.search-btn:hover {
+    background-color: #faa935;
+    color: #fff;
+}

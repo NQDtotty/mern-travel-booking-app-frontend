@@ -3,7 +3,7 @@
     font-size: 1.3rem;
     border-radius: 15px;
     background-color: #faa935;
-    padding: 5px 10px;
+    padding: 5px 20px;
 }
 
 .hero-subtitle img {
@@ -29,4 +29,22 @@
     border: 1px solid #faa935;
     border-radius: 20px;
     object-fit: cover;
+}
+
+.service-subtitle {
+    font-weight: 500;
+    color: #ee6e6e;
+    font-family: "Island Moments", cursive;
+}
+
+.service-title {
+    font-weight: 600;
+}
+
+
+@media only screen and (max-width: 1024px) {
+    .service-title {
+        font-weight: 600;
+        font-size: 2rem;
+    }
 }
