@@ -3,8 +3,6 @@ import './header.css';
 import { Container, Row } from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
 
-import logo from '../../assets/images/logo.png';
-
 const navLinks = [
     {
         path: '/home',
@@ -31,7 +29,7 @@ export default function Header() {
                 <Row>
                     <div className='nav-wrapper d-flex align-items-center justify-content-between'>
                         <div className='header-logo'>
-                            <img src={logo} alt='logo-img' />
+                            <img src="/images/logo.png" alt='logo-img' />
                         </div>
 
                         <div className='header-nav' ref={menuRef} onClick={toggleMenu}>

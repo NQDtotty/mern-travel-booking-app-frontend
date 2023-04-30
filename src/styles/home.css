@@ -41,6 +41,18 @@
     font-weight: 600;
 }
 
+.featured-subtitle {
+    font-family: "Island Moments", cursive;
+    font-size: 1.3rem;
+    border-radius: 15px;
+    background-color: #faa935;
+    padding: 5px 20px;
+    display: inline-block;
+}
+
+.featured-title {
+    font-weight: 600;
+}
 
 @media only screen and (max-width: 1024px) {
     .service-title {

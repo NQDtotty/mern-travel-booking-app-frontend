@@ -1,24 +1,21 @@
 import React from 'react'
 import { Col } from 'reactstrap';
 
-import weatherImg from '../../assets/images/weather.png';
-import guideImg from '../../assets/images/guide.png';
-import customizationImg from '../../assets/images/customization.png';
 import ServiceCard from './ServiceCard';
 
 const serviceData = [
     {
-        imgUrl: weatherImg,
+        imgUrl: "/images/weather.png",
         title: "Calculate Weather",
         desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
     },
     {
-        imgUrl: guideImg,
+        imgUrl: "/images/guide.png",
         title: "Best Tour Guide",
         desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
     },
     {
-        imgUrl: customizationImg,
+        imgUrl: "/images/customization.png",
         title: "Customization",
         desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit."
     }

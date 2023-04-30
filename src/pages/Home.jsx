@@ -3,13 +3,9 @@ import { Container, Row, Col } from 'reactstrap';
 import '../styles/home.css';
 import Helmet from '../components/Helmet/Helmet';
 
-import heroImg1 from '../assets/images/hero-img01.jpg';
-import heroImg2 from '../assets/images/hero-img02.jpg';
-import heroVideo from '../assets/images/hero-video.mp4';
-import worldImg from '../assets/images/world.png';
-
 import SearchBar from '../components/UI/SearchBar/SearchBar';
 import ServiceList from '../components/Service/ServiceList';
+import FeaturedTourList from '../components/FeaturedTour/FeaturedTourList';
 
 export default function Home() {
     return (
@@ -21,7 +17,7 @@ export default function Home() {
                             <div className='hero-content'>
                                 <div className='mt-4 hero-subtitle d-flex align-items-center'>
                                     <h4 className='mb-0'>Know Before You Go</h4>
-                                    <img src={worldImg} alt='world-img' />
+                                    <img src="/images/world.png" alt='world-img' />
                                 </div>
                                 <h1 className='mt-4'>Traveling opens the door to creating <span className='highlight'>memories</span></h1>
                                 <p className='mt-4'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo nobis voluptatibus sint vero tempora repudiandae vel quo non nisi. Quibusdam sapiente, nihil quisquam sed aliquid perferendis aspernatur veniam non qui!</p>
@@ -31,17 +27,17 @@ export default function Home() {
                             <Row>
                                 <Col md="4" sm="12">
                                     <div className='hero-video mb-2'>
-                                        <video src={heroVideo} alt='hero-video' controls />
+                                        <video src="/images/hero-video.mp4" alt='hero-video' controls />
                                     </div>
                                 </Col>
                                 <Col md="4" sm="12">
                                     <div className='hero-img mt-2'>
-                                        <img src={heroImg2} alt='hero-img2' />
+                                        <img src="/images/hero-img02.jpg" alt='hero-img2' />
                                     </div>
                                 </Col>
                                 <Col md="4" sm="12">
                                     <div className='hero-img mt-4'>
-                                        <img src={heroImg1} alt='hero-img1' />
+                                        <img src="/images/hero-img01.jpg" alt='hero-img1' />
                                     </div>
                                 </Col>
                             </Row>
@@ -64,6 +60,21 @@ export default function Home() {
                             <h1 className='text-center service-title'>We offer our<br /> best services</h1>
                         </Col>
                         <ServiceList></ServiceList>
+                    </Row>
+                </Container>
+            </section>
+
+            {/* Featured Tour */}
+            <section>
+                <Container>
+                    <Row>
+                        <Col lg="12">
+                            <h4 className='mb-0 featured-subtitle'>Explore</h4>
+                            <h2 className='mt-4 featured-title'>Our featured tour</h2>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <FeaturedTourList></FeaturedTourList>
                     </Row>
                 </Container>
             </section>
