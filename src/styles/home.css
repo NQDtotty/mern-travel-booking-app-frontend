@@ -54,6 +54,60 @@
     font-weight: 600;
 }
 
+.experience-subtitle {
+    font-family: "Island Moments", cursive;
+    font-size: 1.3rem;
+    border-radius: 15px;
+    background-color: #faa935;
+    padding: 5px 20px;
+    display: inline-block;
+}
+
+.experience-title {
+    font-weight: 600;
+}
+
+.experience-desc {
+    color: #333;
+}
+
+.experience-img img {
+    width: 100%;
+}
+
+.box-statistic {
+    width: 70px;
+    padding: 15px;
+    display: inline-block;
+    background-color: #faa935;
+    vertical-align: bottom;
+    border-radius: 5px 15px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.desc-statistic {
+    font-weight: 600;
+}
+
+.gallery-subtitle {
+    font-family: "Island Moments", cursive;
+    font-size: 1.3rem;
+    border-radius: 15px;
+    background-color: #faa935;
+    padding: 5px 20px;
+    display: inline-block;
+}
+
+.gallery-title {
+    font-weight: 600;
+}
+
+.newsletter {
+    background-color: #cae5f4;
+}
+
 @media only screen and (max-width: 1024px) {
     .service-title {
         font-weight: 600;

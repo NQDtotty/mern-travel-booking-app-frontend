@@ -6,6 +6,8 @@ import Helmet from '../components/Helmet/Helmet';
 import SearchBar from '../components/UI/SearchBar/SearchBar';
 import ServiceList from '../components/Service/ServiceList';
 import FeaturedTourList from '../components/FeaturedTour/FeaturedTourList';
+import MasonryImagesGallery from '../components/Gallery/MasonryImagesGallery';
+import Newsletter from '../components/Newsletter/Newsletter';
 
 export default function Home() {
     return (
@@ -77,6 +79,70 @@ export default function Home() {
                         <FeaturedTourList></FeaturedTourList>
                     </Row>
                 </Container>
+            </section>
+
+            {/* Experience */}
+            <section>
+                <Container>
+                    <Row>
+                        <Col lg="6" md="12" sm="12">
+                            <h4 className='mb-0 experience-subtitle'>Experience</h4>
+                            <h2 className='mt-4 experience-title'>With our all experience <br />We will serve you</h2>
+                            <p className='mt-4 experience-desc'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore sunt repudiandae fugiat pariatur eos perferendis!</p>
+                            <div className='mt-5 experience-statistic d-flex align-items-center justify-content-between'>
+                                <div className='item-statistic text-center'>
+                                    <span className='box-statistic'>
+                                        12k+
+                                    </span>
+                                    <p className='mt-3 desc-statistic'>
+                                        Successful trip
+                                    </p>
+                                </div>
+                                <div className='item-statistic text-center'>
+                                    <span className='box-statistic'>
+                                        2k+
+                                    </span>
+                                    <p className='mt-3 desc-statistic'>
+                                        Regular clients
+                                    </p>
+                                </div>
+                                <div className='item-statistic text-center'>
+                                    <span className='box-statistic'>
+                                        15
+                                    </span>
+                                    <p className='mt-3 desc-statistic'>
+                                        Year experience
+                                    </p>
+                                </div>
+                            </div>
+                        </Col>
+                        <Col lg="6" md="12" sm="12">
+                            <div className='experience-img'>
+                                <img src='/images/experience.png' alt='experience-img' />
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+
+            {/* Gallery */}
+            <section>
+                <Container>
+                    <Row>
+                        <Col lg="12">
+                            <h4 className='mb-0 gallery-subtitle'>Gallery</h4>
+                            <h2 className='mt-4 gallery-title'>Visit our customers tour gallery</h2>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <MasonryImagesGallery></MasonryImagesGallery>
+                    </Row>
+                </Container>
+            </section>
+
+            {/* Newsletter */}
+            <section className='newsletter'>
+                <Newsletter></Newsletter>
             </section>
         </Helmet>
     )

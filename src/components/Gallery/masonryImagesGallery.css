@@ -1,0 +1,10 @@
+.masonry-img {
+    width: 100%;
+    display: block;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.masonry-img:hover {
+    transform: scale(1.1);
+}
