@@ -5,6 +5,8 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
 import "remixicon/fonts/remixicon.css";
+import 'react-rater/lib/react-rater.css'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
