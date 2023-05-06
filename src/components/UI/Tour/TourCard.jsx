@@ -22,7 +22,7 @@ export default function TourCard({ tour }) {
                     </span>
                     <span className='tour-rating d-flex align-items-center gap-1'>
                         {
-                            totalReviews === 0 ? <i className="ri-star-line"></i> : avgRating === 5 ? <i className="ri-star-fill"></i> : <i className="ri-star-half-fill"></i>
+                            totalReviews === 0 ? <i className="ri-star-line"></i> : Number(avgRating) === 5 ? <i className="ri-star-fill"></i> : <i className="ri-star-half-fill"></i>
                         }{<i>{avgRating}</i>}
                         <span>{totalReviews === 0 ? "Not rated" : `(${totalReviews} rated)`}</span>
                     </span>

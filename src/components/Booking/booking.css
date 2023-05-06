@@ -1,0 +1,53 @@
+.booking {
+    width: 100%;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    position: sticky;
+    top: 80px;
+}
+
+.booking-top h3 {
+    font-weight: 550;
+    font-size: 2rem;
+}
+
+.booking-top span {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.booking-top span i {
+    color: #faa935;
+    font-style: normal;
+}
+
+.booking-infor h2 {
+    font-weight: 550;
+    font-size: 1.4rem;
+}
+
+.booking-bottom p {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.btn-booking button {
+    border-radius: 50px;
+    background-color: #ff7e01;
+    padding: 7px 15px;
+    font-weight: 600;
+    color: #fff;
+    width: 100%;
+}
+
+.btn-booking button:hover {
+    background-color: #faa935;
+    color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+    .booking {
+        margin-top: 25px;
+    }
+}

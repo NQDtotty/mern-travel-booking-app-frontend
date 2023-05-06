@@ -73,6 +73,10 @@
     font-size: 0.9rem;
 }
 
+.review-content div i {
+    color: #faa935;
+}
+
 .review-content p {
     color: #333;
     font-size: 1rem;
