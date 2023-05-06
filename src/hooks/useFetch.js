@@ -13,12 +13,12 @@ function useFetch(url) {
                 if (!res.ok) {
                     setError("Failed to fetch");
                 }
-                const result = await res.json();
-                setData(result.data);
-                setLoading(false);
+                else {
+                    const result = await res.json();
+                    setData(result.data);
+                    setLoading(false);
+                }
             } catch (error) {
-                setError(error.message);
-                setLoading(false);
             }
         }
 

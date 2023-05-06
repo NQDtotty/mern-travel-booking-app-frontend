@@ -12,7 +12,7 @@
     position: relative;
 }
 
-.tour-img span {
+.featured-tour {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -23,8 +23,13 @@
     font-weight: 600;
 }
 
+.not-featured-tour {
+    display: none;
+}
+
 .card-top i {
     color: #faa935;
+    font-style: normal;
 }
 
 .card-top span {

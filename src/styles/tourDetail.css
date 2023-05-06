@@ -1,0 +1,25 @@
+.tour-content img {
+    width: 80%;
+    border-radius: 15px;
+}
+
+.tour-infor {
+    width: 80%;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+}
+
+.tour-infor h2 {
+    font-weight: 550;
+    font-size: 1.4rem;
+}
+
+.tour-infor span {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.tour-infor i {
+    color: #faa935;
+}

@@ -38,7 +38,7 @@ export default function SearchBar() {
                             </span>
                             <div>
                                 <h6>Distance</h6>
-                                <input type='number' ref={distanceRef} placeholder='Distance k/m' />
+                                <input type='number' ref={distanceRef} min="0" placeholder='Distance k/m' />
                             </div>
                         </FormGroup>
                     </Col>
@@ -49,7 +49,7 @@ export default function SearchBar() {
                             </span>
                             <div>
                                 <h6>Max People</h6>
-                                <input type='number' ref={maxGroupSizeRef} placeholder='0' />
+                                <input type='number' ref={maxGroupSizeRef} min="0" placeholder='0' />
                             </div>
                         </FormGroup>
                     </Col>

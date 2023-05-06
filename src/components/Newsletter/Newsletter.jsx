@@ -10,7 +10,7 @@ export default function Newsletter() {
                     <div className='newsletter-content'>
                         <h2 className='mb-5'>Subscribe now to get useful traveling information.</h2>
                         <div className='mb-4 newsletter-input'>
-                            <input type='text' placeholder='Enter your email' />
+                            <input className='form-control' type='text' placeholder='Enter your email' />
                             <button className='btn'>Subscribe</button>
                         </div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi odit nulla maxime itaque fugiat illum.</p>

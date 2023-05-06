@@ -1,0 +1,18 @@
+.pagination span {
+    padding: 5px;
+    width: 1.8rem;
+    height: 1.8rem;
+    font-size: 0.8rem;
+    border: 1px solid #faa935;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 550;
+}
+
+.active-page {
+    color: #fff;
+    background-color: #faa935;
+}
