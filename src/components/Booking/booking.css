@@ -46,6 +46,8 @@
     color: #fff;
 }
 
+/* @media only screen and (max-width: 1024) */
+
 @media only screen and (max-width: 768px) {
     .booking {
         margin-top: 25px;

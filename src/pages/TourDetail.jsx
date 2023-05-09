@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../styles/tourDetail.css';
 import useFetch from '../hooks/useFetch';
 import { BASE_URL } from '../utils/config';
@@ -35,6 +35,10 @@ export default function TourDetail() {
             // Call API create review of tour
         }
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <Helmet title="Tour Detail">
@@ -147,7 +151,6 @@ export default function TourDetail() {
                                 </Col>
                             </>
                         )}
-
                     </Row>
                 </Container>
             </section >

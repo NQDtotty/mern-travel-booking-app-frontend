@@ -48,7 +48,7 @@ export default function Footer() {
                             <ListGroupItem className='footer-list-item border-0'>
                                 <i className="ri-map-pin-line"></i>&nbsp;&nbsp;
                                 <span>Address:</span>&nbsp;&nbsp;&nbsp;
-                                <a>Vietnam</a>
+                                <a href='#'>Vietnam</a>
                             </ListGroupItem>
                             <ListGroupItem className='footer-list-item border-0'>
                                 <i className="ri-mail-line"></i>&nbsp;&nbsp;
