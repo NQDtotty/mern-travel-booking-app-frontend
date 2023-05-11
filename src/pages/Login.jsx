@@ -1,14 +1,52 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/login.css';
 import Helmet from '../components/Helmet/Helmet';
+import { AuthContext } from '../context/AuthContext';
+import { BASE_URL } from '../utils/config';
 
 export default function Login() {
-    const [credentials, setCredentials] = useState({
-        email: undefined,
-        password: undefined
-    });
+    const emailRef = useRef("");
+    const passwordRef = useRef("");
+    const navigate = useNavigate();
+    const { dispatch } = useContext(AuthContext);
+
+    const handleSubmit = async e => {
+        e.preventDefault();
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        dispatch({ type: 'LOGIN_START' })
+
+        try {
+            const res = await fetch(`${BASE_URL}/auth/login`, {
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            })
+
+            const result = await res.json();
+            if (!res.ok) alert(result.message);
+            else {
+                console.log(result.data)
+                dispatch({ type: 'LOGIN_SUCCESS', payload: result.data });
+                navigate("/");
+            }
+        } catch (error) {
+            dispatch({ type: 'LOGIN_FAILURE' });
+        }
+
+    }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <Helmet title="Login">
@@ -26,12 +64,12 @@ export default function Login() {
                                 <h2>Login</h2>
                                 <Form>
                                     <FormGroup>
-                                        <input className='form-control' type='email' placeholder='Email' required />
+                                        <input ref={emailRef} className='form-control' type='email' placeholder='Email' required />
                                     </FormGroup>
                                     <FormGroup>
-                                        <input className='form-control' type='password' placeholder='Password' required />
+                                        <input ref={passwordRef} className='form-control' type='password' placeholder='Password' required />
                                     </FormGroup>
-                                    <button className='btn'>Login</button>
+                                    <button onClick={handleSubmit} className='btn'>Login</button>
                                     <p className='mt-4'>Create new account &nbsp; <Link className='link' to="/register">Register</Link></p>
                                 </Form>
                             </div>

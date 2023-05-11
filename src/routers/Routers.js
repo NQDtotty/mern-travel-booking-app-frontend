@@ -6,6 +6,7 @@ import TourDetail from '../pages/TourDetail';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 import SearchResultList from '../pages/SearchResultList';
+import SuccessBooking from '../pages/SuccessBooking';
 
 export default function Routers() {
     return (
@@ -17,6 +18,7 @@ export default function Routers() {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/tours/search" element={<SearchResultList />}></Route>
+            <Route path="/booking/success" element={<SuccessBooking />}></Route>
         </Routes>
     )
 }

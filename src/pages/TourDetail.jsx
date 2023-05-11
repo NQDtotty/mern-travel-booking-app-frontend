@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import '../styles/tourDetail.css';
 import useFetch from '../hooks/useFetch';
 import { BASE_URL } from '../utils/config';
@@ -8,6 +8,7 @@ import Helmet from '../components/Helmet/Helmet';
 import calculateAvgRating from '../utils/avgRating';
 import Rater from 'react-rater';
 import Booking from '../components/Booking/Booking';
+import { AuthContext } from '../context/AuthContext';
 
 export default function TourDetail() {
     const { id } = useParams();
@@ -16,6 +17,7 @@ export default function TourDetail() {
     const { totalReviews, avgRating } = calculateAvgRating(reviews);
     const [rating, setRating] = useState(0);
     const reviewMsgRef = useRef("");
+    const { user } = useContext(AuthContext);
 
     const formatDate = date => {
         return new Date(date).toLocaleDateString("en-US", {
@@ -25,14 +27,36 @@ export default function TourDetail() {
         });
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        const reviewText = reviewMsgRef.current.value.trim();
-        if (!reviewText || rating === 0) {
-            alert("Required text field or rating")
-        }
+        if (!user || user === null || user === undefined) alert("Please Sign in to review");
         else {
-            // Call API create review of tour
+            const reviewText = reviewMsgRef.current.value.trim();
+            if (!reviewText || rating === 0) {
+                alert("Required text field or rating")
+            }
+            else {
+                try {
+                    const res = await fetch(`${BASE_URL}/review/createReview/${id}`, {
+                        method: "POST",
+                        headers: {
+                            "content-type": "application/json"
+                        },
+                        credentials: "include",
+                        body: JSON.stringify({
+                            username: user.username,
+                            reviewText,
+                            rating
+                        })
+                    });
+                    const result = await res.json();
+                    if (!res.ok) alert(result.message);
+                    else {
+                        alert("Review submitted");
+                    }
+                } catch (error) {
+                }
+            }
         }
     }
 

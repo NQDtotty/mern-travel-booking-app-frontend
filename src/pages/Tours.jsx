@@ -22,7 +22,7 @@ export default function Tour() {
     useEffect(() => {
         const pages = Math.ceil(tourCount / 2);
         setPageCount(pages);
-        window.scrollTo(1, 1);
+        window.scrollTo(0, 0);
     }, [tourCount, page]);
 
     return (

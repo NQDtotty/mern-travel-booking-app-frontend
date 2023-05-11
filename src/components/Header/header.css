@@ -2,6 +2,8 @@
     width: 100%;
     height: 80px;
     line-height: 80px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
 .header-logo img {
@@ -22,6 +24,12 @@
 
 .active-link {
     color: #faa935 !important;
+}
+
+.nav-btn h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .nav-btn .secondary-btn {

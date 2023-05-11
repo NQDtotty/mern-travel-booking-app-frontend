@@ -1,21 +1,58 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import './booking.css';
 import { Col, Form, Row } from 'reactstrap';
+import { AuthContext } from '../../context/AuthContext';
+import { BASE_URL } from '../../utils/config';
+import { useNavigate } from 'react-router-dom';
 
 export default function Booking({ tour, totalReviews, avgRating }) {
-    const { price } = tour;
+    const { price, title } = tour;
     const SERVICE_CHARGE = 10;
     const [numOfGuest, setNumOfGuest] = useState(0);
     const dateRef = useRef("");
     const nameRef = useRef("");
     const phoneRef = useRef("");
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const calTotal = () => {
         return numOfGuest === 0 ? "" : price * numOfGuest + SERVICE_CHARGE;
     }
 
-    const handleBooking = () => {
+    const handleBooking = async () => {
+        const name = nameRef.current.value.trim();
+        const phone = phoneRef.current.value.trim();
+        const date = dateRef.current.value;
 
+        if (!user || user === undefined || user === null) alert("Please Sign in to booking");
+        else {
+            if (!name || !phone || !date || numOfGuest === 0) alert("Required text field");
+            else {
+                try {
+                    const res = await fetch(`${BASE_URL}/booking/createBooking`, {
+                        method: "POST",
+                        headers: {
+                            "content-type": "application/json"
+                        },
+                        credentials: "include",
+                        body: JSON.stringify({
+                            userId: user._id,
+                            userEmail: user.email,
+                            tourName: title,
+                            fullName: name,
+                            guestSize: numOfGuest,
+                            phone,
+                            bookAt: date
+                        })
+                    })
+                    const result = await res.json();
+                    if (!res.ok) alert(result.message);
+                    else navigate("/booking/success");
+                } catch (error) {
+
+                }
+            }
+        }
     }
 
     return (

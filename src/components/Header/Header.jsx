@@ -1,7 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import './header.css';
 import { Container, Row } from 'reactstrap';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 const navLinks = [
     {
@@ -20,6 +21,13 @@ const navLinks = [
 
 export default function Header() {
     const menuRef = useRef(null);
+    const { user, dispatch } = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const logout = () => {
+        dispatch({ type: "LOGOUT" });
+        navigate("/");
+    }
 
     const toggleMenu = () => menuRef.current.classList.toggle("show-menu");
 
@@ -46,12 +54,21 @@ export default function Header() {
 
                         <div className='header-right d-flex align-items-center gap-4'>
                             <div className='nav-btn d-flex align-items-center'>
-                                <button className='btn secondary-btn'>
-                                    <Link to='/login'>Login</Link>
-                                </button>
-                                <button className='btn primary-btn'>
-                                    <Link to='/register'>Register</Link>
-                                </button>
+                                {
+                                    user ?
+                                        <div className='d-flex align-items-center gap-2'>
+                                            <h5 className='mb-0 text-center'>{user.username}</h5>
+                                            <button onClick={logout} className='btn btn-dark'>Logout</button>
+                                        </div> :
+                                        <>
+                                            <button className='btn secondary-btn'>
+                                                <Link to='/login'>Login</Link>
+                                            </button>
+                                            <button className='btn primary-btn'>
+                                                <Link to='/register'>Register</Link>
+                                            </button>
+                                        </>
+                                }
                             </div>
 
                             <span className='menu-mobile' onClick={toggleMenu}>

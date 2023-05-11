@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Helmet from '../components/Helmet/Helmet';
 import CommonSection from '../components/UI/Common/CommonSection';
 import { Col, Container, Row } from 'reactstrap';
@@ -8,7 +8,10 @@ import TourCard from '../components/UI/Tour/TourCard';
 export default function SearchResultList() {
     const location = useLocation();
     const [data] = useState(location.state);
-    console.log("🚀 ~ file: SearchResultList.jsx:11 ~ SearchResultList ~ data:", data)
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <Helmet title="Search Result">
