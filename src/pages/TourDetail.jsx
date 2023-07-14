@@ -8,11 +8,12 @@ import Helmet from '../components/Helmet/Helmet';
 import calculateAvgRating from '../utils/avgRating';
 import Rater from 'react-rater';
 import Booking from '../components/Booking/Booking';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function TourDetail() {
     const { id } = useParams();
-    const { data: tour, loading, error } = useFetch(`${BASE_URL}/tour/getTourById/${id}`);
+    const { data: tour, loading, error } = useFetch(`${BASE_URL}/tours/${id}`);
     const { photo, title, address, desc, price, reviews, city, distance, maxGroupSize } = tour;
     const { totalReviews, avgRating } = calculateAvgRating(reviews);
     const [rating, setRating] = useState(0);
@@ -29,15 +30,24 @@ export default function TourDetail() {
 
     const handleSubmit = async e => {
         e.preventDefault();
-        if (!user || user === null || user === undefined) alert("Please Sign in to review");
-        else {
+        if (!user || user === null || user === undefined) {
+            toast.warn('You need login to review', {
+                position: toast.POSITION.BOTTOM_CENTER,
+                className: 'toast-message',
+                autoClose: 800,
+            });
+        } else {
             const reviewText = reviewMsgRef.current.value.trim();
             if (!reviewText || rating === 0) {
-                alert("Required text field or rating")
+                toast.warn('Required text field or rating', {
+                    position: toast.POSITION.BOTTOM_CENTER,
+                    className: 'toast-message',
+                    autoClose: 800,
+                });
             }
             else {
                 try {
-                    const res = await fetch(`${BASE_URL}/review/createReview/${id}`, {
+                    const res = await fetch(`${BASE_URL}/reviews/${id}`, {
                         method: "POST",
                         headers: {
                             "content-type": "application/json"
@@ -50,9 +60,18 @@ export default function TourDetail() {
                         })
                     });
                     const result = await res.json();
-                    if (!res.ok) alert(result.message);
-                    else {
-                        alert("Review submitted");
+                    if (!res.ok) {
+                        toast.error(result.message, {
+                            position: toast.POSITION.BOTTOM_CENTER,
+                            className: 'toast-message',
+                            autoClose: 800,
+                        });
+                    } else {
+                        toast.success(result.message, {
+                            position: toast.POSITION.BOTTOM_CENTER,
+                            className: 'toast-message',
+                            autoClose: 800,
+                        });
                     }
                 } catch (error) {
                 }
@@ -66,6 +85,7 @@ export default function TourDetail() {
 
     return (
         <Helmet title="Tour Detail">
+            <ToastContainer />
             <section>
                 <Container>
                     <Row>
@@ -143,7 +163,7 @@ export default function TourDetail() {
                                                 <ListGroup>
                                                     {reviews?.map((item, index) => (
                                                         <ListGroupItem key={index} className='review-item'>
-                                                            <Row className='d-flex align-items-center justify-content-between'>
+                                                            <Row className='d-flex align-items-center'>
                                                                 <Col lg="2" md="2" sm="2">
                                                                     <div className='review-avatar'>
                                                                         <img src='/images/avatar.jpg' alt='review-avatar-img' />

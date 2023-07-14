@@ -2,7 +2,7 @@ import React, { useContext, useRef } from 'react';
 import './header.css';
 import { Container, Row } from 'reactstrap';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const navLinks = [
     {

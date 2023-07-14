@@ -13,17 +13,17 @@ export default function Tour() {
     const [page, setPage] = useState(0);
 
     const { data: tours, loading, error } = useFetch(
-        `${BASE_URL}/tour/getAllTour?page=${page}`
+        `${BASE_URL}/tours?page=${page}`
     );
     const { data: tourCount } = useFetch(
-        `${BASE_URL}/tour/search/getTourCount`
+        `${BASE_URL}/tours/count/count-tour`
     );
 
     useEffect(() => {
-        const pages = Math.ceil(tourCount / 2);
+        const pages = Math.ceil(tourCount / 4);
         setPageCount(pages);
         window.scrollTo(0, 0);
-    }, [tourCount, page]);
+    }, [tourCount, tours]);
 
     return (
         <Helmet title="Tours">

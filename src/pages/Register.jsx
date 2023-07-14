@@ -1,20 +1,15 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, { useEffect, useContext, useRef } from 'react';
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/register.css';
 import Helmet from '../components/Helmet/Helmet';
 import { BASE_URL } from '../utils/config';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 
 export default function Register() {
     const usernameRef = useRef("");
     const emailRef = useRef("");
     const passwordRef = useRef("");
-
-    const [credentials, setCredentials] = useState({
-        email: undefined,
-        password: undefined
-    });
 
     const navigate = useNavigate();
     const { dispatch } = useContext(AuthContext);
@@ -30,7 +25,7 @@ export default function Register() {
         const password = passwordRef.current.value;
 
         try {
-            const res = await fetch(`${BASE_URL}/auth/register`, {
+            const res = await fetch(`${BASE_URL}/auths/register`, {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
@@ -58,7 +53,7 @@ export default function Register() {
             <Container>
                 <Row>
                     <Col lg="8" className='m-auto'>
-                        <div className='register-wrapper d-flex justify-content-between'>
+                        <div className='mb-5 register-wrapper d-flex justify-content-between'>
                             <div className='register-img text-center'>
                                 <img src='/images/register.png' alt='register-img' />
                             </div>

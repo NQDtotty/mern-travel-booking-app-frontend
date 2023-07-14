@@ -5,8 +5,9 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
 import "remixicon/fonts/remixicon.css";
-import 'react-rater/lib/react-rater.css'
-import { AuthContextProvider } from './context/AuthContext';
+import 'react-rater/lib/react-rater.css';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthContextProvider } from './contexts/AuthContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,7 +20,3 @@ root.render(
         </AuthContextProvider>
     </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

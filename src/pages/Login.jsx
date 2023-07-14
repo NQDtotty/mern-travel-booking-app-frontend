@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/login.css';
 import Helmet from '../components/Helmet/Helmet';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 import { BASE_URL } from '../utils/config';
 
 export default function Login() {
@@ -19,7 +19,7 @@ export default function Login() {
         dispatch({ type: 'LOGIN_START' })
 
         try {
-            const res = await fetch(`${BASE_URL}/auth/login`, {
+            const res = await fetch(`${BASE_URL}/auths/login`, {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'
@@ -34,7 +34,6 @@ export default function Login() {
             const result = await res.json();
             if (!res.ok) alert(result.message);
             else {
-                console.log(result.data)
                 dispatch({ type: 'LOGIN_SUCCESS', payload: result.data });
                 navigate("/");
             }
@@ -53,7 +52,7 @@ export default function Login() {
             <Container>
                 <Row>
                     <Col lg="8" className='m-auto'>
-                        <div className='login-wrapper d-flex justify-content-between'>
+                        <div className='mb-5 login-wrapper d-flex justify-content-between'>
                             <div className='login-img text-center'>
                                 <img src='/images/login.png' alt='login-img' />
                             </div>

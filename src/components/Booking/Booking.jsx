@@ -1,9 +1,10 @@
 import React, { useContext, useRef, useState } from 'react';
 import './booking.css';
 import { Col, Form, Row } from 'reactstrap';
-import { AuthContext } from '../../context/AuthContext';
+import { AuthContext } from '../../contexts/AuthContext';
 import { BASE_URL } from '../../utils/config';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Booking({ tour, totalReviews, avgRating }) {
     const { price, title } = tour;
@@ -21,15 +22,26 @@ export default function Booking({ tour, totalReviews, avgRating }) {
 
     const handleBooking = async () => {
         const name = nameRef.current.value.trim();
-        const phone = phoneRef.current.value.trim();
+        const phone = phoneRef.current.value;
         const date = dateRef.current.value;
 
-        if (!user || user === undefined || user === null) alert("Please Sign in to booking");
-        else {
-            if (!name || !phone || !date || numOfGuest === 0) alert("Required text field");
+        if (!user || user === undefined || user === null) {
+            toast.warn('Please login to booking', {
+                position: toast.POSITION.BOTTOM_CENTER,
+                className: 'toast-message',
+                autoClose: 800,
+            });
+        } else {
+            if (!name || !phone || !date || numOfGuest === 0) {
+                toast.warn('Required text field to booking', {
+                    position: toast.POSITION.BOTTOM_CENTER,
+                    className: 'toast-message',
+                    autoClose: 800,
+                });
+            }
             else {
                 try {
-                    const res = await fetch(`${BASE_URL}/booking/createBooking`, {
+                    const res = await fetch(`${BASE_URL}/bookings/`, {
                         method: "POST",
                         headers: {
                             "content-type": "application/json"
@@ -46,10 +58,24 @@ export default function Booking({ tour, totalReviews, avgRating }) {
                         })
                     })
                     const result = await res.json();
-                    if (!res.ok) alert(result.message);
-                    else navigate("/booking/success");
+                    if (!res.ok) {
+                        toast.error(result.message, {
+                            position: toast.POSITION.BOTTOM_CENTER,
+                            className: 'toast-message',
+                            autoClose: 800,
+                        });
+                    }
+                    else {
+                        toast.success(result.message, {
+                            position: toast.POSITION.BOTTOM_CENTER,
+                            className: 'toast-message',
+                            autoClose: 1000,
+                        });
+                        setTimeout(() => {
+                            navigate("/booking/success");
+                        }, 1200);
+                    }
                 } catch (error) {
-
                 }
             }
         }
@@ -57,6 +83,7 @@ export default function Booking({ tour, totalReviews, avgRating }) {
 
     return (
         <div className='booking'>
+            <ToastContainer />
             <div className="booking-top">
                 <Row className='d-flex align-items-center justify-content-between'>
                     <Col lg="6" md="6" sm="6">

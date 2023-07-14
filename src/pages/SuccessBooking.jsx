@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/successBooking.css';
 import Helmet from '../components/Helmet/Helmet';
 import { Col, Container, Row } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 export default function SuccessBooking() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <Helmet title="Success Booking">
             <section>

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import './searchBar.css';
 import { Container, Row, Col, Form, FormGroup } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../../../utils/config';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function SearchBar() {
     const locationRef = useRef("");
@@ -17,21 +17,20 @@ export default function SearchBar() {
         const maxGroupSize = Number(maxGroupSizeRef.current.value);
 
         if (location === "" || distance === 0 || maxGroupSize === 0) {
-            alert("All fields are required!");
+            toast.warn('All field are required!!', {
+                position: toast.POSITION.BOTTOM_CENTER,
+                className: 'toast-message',
+                autoClose: 800,
+            });
         }
         else {
-            const res = await fetch(`${BASE_URL}/tour/search/getTourBySearch?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`);
-
-            if (!res.ok) alert("Something went wrong");
-
-            const result = await res.json();
-
-            navigate(`/tours/search?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`, { state: result.data });
+            navigate(`/tours/search?city=${location}&distance=${distance}&maxGroupSize=${maxGroupSize}`, { state: { location, distance, maxGroupSize } });
         }
     }
 
     return (
         <Container>
+            <ToastContainer />
             <Form className='search-bar'>
                 <Row className='d-flex align-items-center justify-content-between'>
                     <Col lg="4" md="12" sm="12">

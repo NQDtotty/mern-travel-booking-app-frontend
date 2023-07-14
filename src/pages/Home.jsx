@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import '../styles/home.css';
 import Helmet from '../components/Helmet/Helmet';
@@ -10,6 +10,10 @@ import MasonryImagesGallery from '../components/Gallery/MasonryImagesGallery';
 import Newsletter from '../components/Newsletter/Newsletter';
 
 export default function Home() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <Helmet title="Home">
             <section>
