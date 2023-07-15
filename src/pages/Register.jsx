@@ -5,6 +5,7 @@ import '../styles/register.css';
 import Helmet from '../components/Helmet/Helmet';
 import { BASE_URL } from '../utils/config';
 import { AuthContext } from '../contexts/AuthContext';
+import { toast, ToastContainer } from 'react-toastify';
 
 export default function Register() {
     const usernameRef = useRef("");
@@ -16,7 +17,7 @@ export default function Register() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    });
+    }, []);
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -24,32 +25,54 @@ export default function Register() {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 
-        try {
-            const res = await fetch(`${BASE_URL}/auths/register`, {
-                method: "POST",
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username,
-                    email,
-                    password
-                })
+        if (!email || !password || !username) {
+            toast.warn('Please input all field', {
+                position: toast.POSITION.BOTTOM_CENTER,
+                className: 'toast-message',
+                autoClose: 800,
             });
+            console.log("Enter")
+        } else {
+            try {
+                const res = await fetch(`${BASE_URL}/auths/register`, {
+                    method: "POST",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username,
+                        email,
+                        password
+                    })
+                });
 
-            const result = await res.json();
-
-            if (!res.ok) alert(result.message);
-            else {
-                dispatch({ type: 'REGISTER_SUCCESS' });
-                navigate("/login");
+                const result = await res.json();
+                if (!res.ok) {
+                    toast.warn(result.message, {
+                        position: toast.POSITION.BOTTOM_CENTER,
+                        className: 'toast-message',
+                        autoClose: 800,
+                    });
+                }
+                else {
+                    toast.success(result.message, {
+                        position: toast.POSITION.BOTTOM_CENTER,
+                        className: 'toast-message',
+                        autoClose: 1000,
+                    });
+                    setTimeout(() => {
+                        dispatch({ type: 'REGISTER_SUCCESS' });
+                        navigate("/login");
+                    }, 1200);
+                }
+            } catch (error) {
             }
-        } catch (error) {
         }
     }
 
     return (
         <Helmet title="Register">
+            <ToastContainer />
             <Container>
                 <Row>
                     <Col lg="8" className='m-auto'>
